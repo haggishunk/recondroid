@@ -10,6 +10,14 @@ resource "digitalocean_loadbalancer" "public" {
     target_protocol = "tcp"
   }
 
+  forwarding_rule {
+    entry_port     = 443
+    entry_protocol = "https"
+
+    target_port     = 443
+    target_protocol = "https"
+  }
+
   healthcheck {
     port     = 22
     protocol = "tcp"
