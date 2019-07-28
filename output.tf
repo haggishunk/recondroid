@@ -1,3 +1,3 @@
-output "droplet_ip" {
-  value = "${digitalocean_droplet.recondroid.ipv4_address}"
+output "drone_ci_url" {
+  value = local.drone_server_url
 }
