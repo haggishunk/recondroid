@@ -1,6 +1,6 @@
 resource "digitalocean_record" "recondroid" {
   domain = "${var.domain}"
   type   = "A"
-  name   = "www"
+  name   = "drone"
   value  = "${digitalocean_loadbalancer.public.ip}"
 }
