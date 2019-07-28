@@ -8,3 +8,4 @@ variable debug {
 variable volume_name {
   default = "recondroid-data"
 }
+variable rpc_server_secret {}

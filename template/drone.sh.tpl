@@ -27,6 +27,7 @@ docker run \
     --env=DRONE_RUNNER_CAPACITY=${DRONE_RUNNER_CAPACITY} \
     --env=DRONE_SERVER_HOST=${DRONE_SERVER_HOST} \
     --env=DRONE_SERVER_PROTO=https \
+    --env=DRONE_RPC_SECRET=${DRONE_RPC_SECRET} \
     --env=DRONE_LOGS_DEBUG=${DRONE_LOGS_DEBUG} \
     --env=DRONE_TLS_AUTOCERT=true \
     --publish=80:80 \

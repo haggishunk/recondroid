@@ -9,6 +9,7 @@ data "template_file" "script" {
     DRONE_GITHUB_CLIENT_ID     = "${var.github_client_id}"
     DRONE_GITHUB_CLIENT_SECRET = "${var.github_client_secret}"
     DRONE_SERVER_HOST          = local.drone_server_host
+    DRONE_RPC_SECRET           = "${var.rpc_server_secret}"
     DRONE_RUNNER_CAPACITY      = 2
     DRONE_LOGS_DEBUG           = "${var.debug}"
   }
