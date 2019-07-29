@@ -28,7 +28,7 @@ resource "digitalocean_loadbalancer" "public" {
     tls_passthrough = true
   }
 
-  redirect_http_to_https = true
+  redirect_http_to_https = false
 
   healthcheck {
     port     = 22
