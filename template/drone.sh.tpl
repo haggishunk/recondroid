@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # mount data volume
-mkdir -p /mnt/recondroid-data
-mount -o discard,defaults,noatime /dev/disk/by-id/scsi-0DO_Volume_${DRONE_DATA_VOLUME} /mnt/recondroid-data
+mkdir -p /mnt/${DRONE_DATA_VOLUME}
+mount -o discard,defaults,noatime /dev/disk/by-id/scsi-0DO_Volume_${DRONE_DATA_VOLUME} /mnt/${DRONE_DATA_VOLUME}
+echo "/dev/disk/by-id/scsi-0DO_Volume_${DRONE_DATA_VOLUME} /mnt/${DRONE_DATA_VOLUME} ext4 defaults,nofail,discard 0 0" | tee -a /etc/fstab
 
 # install docker
 apt update
@@ -20,7 +21,7 @@ su recondroid
 # run drone
 docker run \
     --volume=/var/run/docker.sock:/var/run/docker.sock \
-    --volume=/var/lib/drone:/data \
+    --volume=/mnt/${DRONE_DATA_VOLUME}:/data \
     --env=DRONE_GITHUB_SERVER=https://github.com \
     --env=DRONE_GITHUB_CLIENT_ID=${DRONE_GITHUB_CLIENT_ID} \
     --env=DRONE_GITHUB_CLIENT_SECRET=${DRONE_GITHUB_CLIENT_SECRET} \
